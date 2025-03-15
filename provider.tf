@@ -5,11 +5,11 @@ terraform {
       version = "~> 5.0"
     }
   }
-    # backend "s3" {
-    #     bucket = "demo-running-tfstate"
-    #     key    = "terraform.tfstate"
-    #     region = "ap-northeast-2"
-    # }
+    backend "s3" {
+        bucket = "demo-running-tfstate"
+        key    = "terraform.tfstate"
+        region = "ap-northeast-2"
+    }
 }
 
 # Configure the AWS Provider

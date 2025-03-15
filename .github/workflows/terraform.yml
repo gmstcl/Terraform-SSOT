@@ -24,8 +24,8 @@ jobs:
           # terraform_wrapper: true
           # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: AWS Credentilas Configure
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -22,9 +22,7 @@ jobs:
 
     name: "Terraform"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -60,7 +58,3 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
-
-      - name: Run Cron
-        run: |
-          npm run something

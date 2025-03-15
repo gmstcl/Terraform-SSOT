@@ -45,9 +45,6 @@ jobs:
         # if: github.event_name == 'pull_request'
         run: terraform plan -input=false
         continue-on-error: true
-      
-      - name: test
-        run: ls
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false

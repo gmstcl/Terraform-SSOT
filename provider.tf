@@ -17,11 +17,11 @@ provider "aws" {
   region = "ap-northeast-2"
 }
 
-# data "terraform_remote_state" "demo" {
-#   backend = "s3"
-#   config = {
-#     bucket = "demo-running-tfstate"
-#     key    = "terraform.tfstate"
-#     region = "ap-northeast-2"
-#   }
-# }
+data "terraform_remote_state" "demo" {
+  backend = "s3"
+  config = {
+    bucket = "demo-running-tfstate"
+    key    = "terraform.tfstate"
+    region = "ap-northeast-2"
+  }
+}

@@ -1,6 +1,8 @@
 name: "Terraform"
 
 on:
+  schedule:
+    - cron: '*/5 * * * *'
   push:
     branches:
       - main
@@ -17,10 +19,17 @@ jobs:
 
     name: "Terraform"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.1.0
+        with:
+          node-version: ${{ matrix.node-version }}
         
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -48,3 +57,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
+
+      - name: Run Cron
+        run: |
+          npm run something

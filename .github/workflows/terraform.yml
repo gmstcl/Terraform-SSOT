@@ -35,6 +35,9 @@ jobs:
         run: terraform plan
         continue-on-error: true
       
+      - name: test
+        run: ls
+      
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         env:

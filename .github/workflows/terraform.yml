@@ -1,14 +1,15 @@
 name: "Terraform"
 
 on:
+  # workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *'
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
-env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+# env:
+#   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 permissions:
   id-token: write   # This is required for requesting the JWT

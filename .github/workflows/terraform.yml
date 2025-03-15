@@ -8,7 +8,6 @@ on:
 permissions:
   id-token: write   # This is required for requesting the JWT
   contents: read 
-  packages: write
 
 jobs:
   terraform:
@@ -16,14 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        # with:
-          # terraform_version: 1.1.7
-          # terraform_wrapper: true
-          # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        uses: actions/checkout@v3
 
       - name: AWS Credentilas Configure
         uses: aws-actions/configure-aws-credentials@v1
@@ -31,6 +23,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        # with:
+          # terraform_version: 1.1.7
+          # terraform_wrapper: true
+          # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init
         id: init

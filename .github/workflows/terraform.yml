@@ -2,8 +2,8 @@ name: "Terraform"
 
 on:
   # workflow_dispatch:
-  # schedule:
-  #   - cron: '*/5 * * * *'
+  schedule:
+     - cron: '*/5 * * * *'
   push:
     branches:
       - main
